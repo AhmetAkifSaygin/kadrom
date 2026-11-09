@@ -10,11 +10,25 @@ android {
         applicationId "com.kadrom.app"
         minSdk 24
         targetSdk 34
-        versionCode 1
+        versionCode((System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInteger())
         versionName "0.1"
     }
 
+    // Sabit test imzası: her derleme aynı anahtarla imzalanır, telefondaki uygulama
+    // silmeden güncellenebilir. Yalnızca test içindir; Play Store'a gizli ayrı anahtar gerekir.
+    signingConfigs {
+        debug {
+            storeFile file('kadrom-test.keystore')
+            storePassword 'kadromtest'
+            keyAlias 'kadrom'
+            keyPassword 'kadromtest'
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
         }

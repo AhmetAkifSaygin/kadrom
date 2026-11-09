@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   derle:
     runs-on: ubuntu-latest
@@ -38,3 +41,12 @@ jobs:
         with:
           name: Kadrom-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      # Telefondan tek linkle indirmek için: .../releases/latest/download/Kadrom.apk
+      - name: Son sürümü yayınla
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk Kadrom.apk
+          gh release delete son --yes --cleanup-tag || true
+          gh release create son Kadrom.apk --title "Kadrom (son sürüm)" --notes "Her güncellemede otomatik yenilenir." --latest
