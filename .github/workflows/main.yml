@@ -20,8 +20,16 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: İlan verisinin adresini ayarla
-        run: sed -i "s#__REPO__#${{ github.repository }}#g" app/src/main/assets/index.html
+      - name: İlan verisini ve adresini uygulamaya göm
+        run: |
+          python3 - <<'PY'
+          p = 'app/src/main/assets/index.html'
+          h = open(p, encoding='utf-8').read()
+          v = open('veri/ilanlar.json', encoding='utf-8').read()
+          h = h.replace('__REPO__', '${{ github.repository }}')
+          h = h.replace('<script>', '<script>window.GOMULU_VERI = ' + v + ';</script>\n<script>', 1)
+          open(p, 'w', encoding='utf-8').write(h)
+          PY
 
       - name: APK derle
         run: gradle assembleDebug --no-daemon
