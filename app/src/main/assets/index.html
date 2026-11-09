@@ -9,17 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F4F1EA; --card:#FFFFFF; --ink:#16211D; --muted:#5F6B66; --line:#E3DED3;
-  --brand:#0E5C46; --brand-ink:#FFFFFF; --brand-soft:#DCEDE6;
+  --bg:#F4F7FC; --card:#FFFFFF; --ink:#0F1B2D; --muted:#556070; --line:#E1E7F0;
+  --brand:#0E2350; --brand-ink:#FFFFFF; --brand-soft:#E6ECF5; --accent:#F5A623; --accent-ink:#B36A00;
   --ok:#13795B; --ok-soft:#DDF2E8; --warn:#A35A00; --warn-soft:#FBEBD3; --bad:#B42318; --bad-soft:#FBE3E0;
-  --chip:#ECE8DF; --shadow:0 1px 2px rgba(22,33,29,.06),0 4px 16px rgba(22,33,29,.06);
+  --chip:#EAF0F8; --shadow:0 1px 2px rgba(14,35,80,.06),0 4px 16px rgba(14,35,80,.06);
   --r:16px;
 }
 @media (prefers-color-scheme: dark){
-  :root{ --bg:#0F1513; --card:#18211E; --ink:#E9EEEB; --muted:#9AA8A2; --line:#2A3531;
-    --brand:#3FB58C; --brand-ink:#06261B; --brand-soft:#173A2F;
+  :root{ --bg:#0B1426; --card:#13203A; --ink:#E9EEF6; --muted:#9FAAC0; --line:#22314F;
+    --brand:#F5A623; --brand-ink:#0E2350; --brand-soft:#33290F; --accent:#F5A623; --accent-ink:#F5C46B;
     --ok:#4CC99A; --ok-soft:#14332A; --warn:#F0B35B; --warn-soft:#3A2C16; --bad:#F2877D; --bad-soft:#3B1E1B;
-    --chip:#222C29; --shadow:none; }
+    --chip:#1B2A47; --shadow:none; }
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,-apple-system,Segoe UI,sans-serif;-webkit-font-smoothing:antialiased}
@@ -28,7 +28,8 @@ button,input,select{font:inherit;color:inherit}
 .wrap{max-width:640px;margin:0 auto;padding:16px 16px 110px}
 header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 14px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.02em}
-.logo .mark{width:34px;height:34px;border-radius:10px;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font-weight:800}
+.logo .mark{width:36px;height:36px;display:grid;place-items:center}
+.logo .mark svg{width:36px;height:36px}
 .sub{color:var(--muted);font-size:13px}
 .hero{background:var(--brand);color:var(--brand-ink);border-radius:20px;padding:18px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center;box-shadow:var(--shadow)}
 .hero .big{font-size:52px;font-weight:800;line-height:1;grid-row:span 2}
@@ -129,12 +130,111 @@ nav.tabs svg{width:22px;height:22px}
 .summary .srow span:last-child{font-weight:700;text-align:right}
 .hidden{display:none!important}
 .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:20px;line-height:1.5}
+/* ===== Açılış / karşılama / giriş ===== */
+.ob{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;overflow-y:auto;background:#F4F7FC;color:#0F1B2D;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.ob-in{width:100%;max-width:480px;margin:0 auto;flex:1;display:flex;flex-direction:column}
+#ob-splash{background:#0E2350;color:#fff;align-items:center;justify-content:center;transition:opacity .35s}
+#ob-splash.kapan{opacity:0;pointer-events:none}
+#ob-splash .bina{position:absolute;left:0;right:0;bottom:0;width:100%;opacity:.16}
+.sp-mid{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:-60px}
+.sp-mid h1{margin:0;font-size:46px;font-weight:800;letter-spacing:-1px}
+.sp-mid p{margin:0;font-size:16px;line-height:1.5;color:rgba(255,255,255,.85);text-align:center}
+.sp-mid .cizgi{width:64px;height:3px;border-radius:2px;background:#F5A623;margin-top:6px}
+.ob-hero{display:block;width:100%;height:auto;flex:none}
+.ob-body{flex:1;margin-top:-32px;background:#F4F7FC;border-radius:28px 28px 0 0;padding:28px 24px 28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative}
+.ob h2{margin:0;font-size:32px;line-height:1.15;font-weight:800;letter-spacing:-.5px;color:#0E2350}
+.ob h2 span{color:#C97A00}
+.ob .lead2{margin:10px 0 0;font-size:15px;line-height:1.5;color:#556070}
+.feat{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.feat div.f1{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #E1E7F0;border-radius:16px;padding:12px 14px}
+.feat .ic{width:40px;height:40px;border-radius:20px;background:#0E2350;display:grid;place-items:center;flex:none}
+.feat b{display:block;font-size:15px}
+.feat small{font-size:13px;color:#556070}
+.ob-btn{height:54px;border-radius:27px;background:#0E2350;color:#fff;border:none;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;width:100%}
+.ob-btn.beyaz{background:#fff;color:#0F1B2D;border:1px solid #D6DBE3;height:52px;border-radius:26px;font-size:15px}
+.ob-alt{margin:0;text-align:center;font-size:14px;color:#556070}
+.ob-link{border:none;background:none;font-weight:700;color:#B36A00;padding:12px 4px;cursor:pointer;font-size:14px}
+.ob-geri{width:44px;height:44px;border-radius:22px;background:#fff;border:1px solid #E1E7F0;display:grid;place-items:center;cursor:pointer}
+.ob-login{padding:24px;display:flex;flex-direction:column;gap:16px;flex:1}
+.ob-logo{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.ob-logo h1{margin:0;font-size:30px;font-weight:800;color:#0E2350}
+.ob-logo p{margin:0;font-size:14px;line-height:1.5;color:#556070}
+.ob-tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#E6ECF5;border-radius:26px;padding:4px}
+.ob-tabs button{height:44px;border-radius:22px;border:none;background:transparent;color:#3D4757;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
+.ob-tabs button.on{background:#0E2350;color:#fff}
+.ob-inp{position:relative;display:flex}
+.ob-inp svg.sol{position:absolute;left:16px;top:17px}
+.ob-inp input{flex:1;height:52px;border-radius:26px;border:1px solid #C3CAD5;background:#fff;padding:0 16px 0 46px;font-size:15px;color:#0F1B2D;outline:none;min-width:0}
+.ob-inp input:focus{border-color:#0E2350}
+.ob-inp .goz{position:absolute;right:4px;top:4px;width:44px;height:44px;border:none;background:transparent;display:grid;place-items:center;cursor:pointer}
+.ob-row{display:flex;justify-content:space-between;align-items:center}
+.ob-row label{display:flex;align-items:center;gap:8px;font-size:14px;color:#3D4757;min-height:44px}
+.ob-row input{width:18px;height:18px;margin:0;accent-color:#0E2350}
+.ob-veya{display:flex;align-items:center;gap:12px;font-size:13px;color:#556070}
+.ob-veya:before,.ob-veya:after{content:"";flex:1;height:1px;background:#D6DBE3}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 </style>
 </head>
 <body>
+<!-- ===== AÇILIŞ ===== -->
+<div class="ob" id="ob-splash">
+  <svg class="bina" viewBox="0 0 390 300" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><g fill="#7FA2E0"><rect x="186" y="40" width="3" height="60"/><path d="M189 40h26l-6 8 6 8h-26z"/><path d="M120 150L195 100L270 150Z"/><rect x="110" y="150" width="170" height="12"/><rect x="122" y="162" width="12" height="80"/><rect x="148" y="162" width="12" height="80"/><rect x="174" y="162" width="12" height="80"/><rect x="204" y="162" width="12" height="80"/><rect x="230" y="162" width="12" height="80"/><rect x="256" y="162" width="12" height="80"/><rect x="40" y="185" width="70" height="57"/><rect x="280" y="185" width="70" height="57"/><rect x="0" y="242" width="390" height="58"/></g></svg>
+  <div class="sp-mid">
+    <svg width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Kadrom logosu"><circle cx="52" cy="52" r="38" fill="#fff" stroke="#F5A623" stroke-width="12"/><path d="M80 80L104 104" stroke="#F5A623" stroke-width="14" stroke-linecap="round"/><circle cx="52" cy="42" r="11" fill="#0E2350"/><path d="M30 76C30 62 40 56 52 56C64 56 74 62 74 76Z" fill="#0E2350"/><path d="M52 57L48 62L52 74L56 62Z" fill="#F5A623"/></svg>
+    <h1>Kadrom</h1>
+    <p>KPSS'deki başarını<br>istihdama dönüştür.</p>
+    <div class="cizgi"></div>
+  </div>
+</div>
+
+<!-- ===== KARŞILAMA ===== -->
+<div class="ob hidden" id="ob-hosgeldin"><div class="ob-in">
+  <svg class="ob-hero" viewBox="0 0 390 300" role="img" aria-label="Türk bayrağı dalgalanan bir kamu binası"><rect width="390" height="300" fill="#BFD7F2"/><circle cx="320" cy="60" r="70" fill="#D9E8F8"/><rect x="150" y="30" width="4" height="120" fill="#8A97A8"/><path d="M154 34C175 28 190 42 214 34L214 78C190 86 175 72 154 78Z" fill="#E30A17"/><circle cx="177" cy="56" r="11" fill="#fff"/><circle cx="180.5" cy="56" r="8.8" fill="#E30A17"/><path d="M192 50l1.8 4.2 4.5.3-3.5 2.9 1.1 4.4-3.9-2.4-3.9 2.4 1.1-4.4-3.5-2.9 4.5-.3z" fill="#fff"/><path d="M95 150L195 112L295 150Z" fill="#E9EDF3"/><rect x="85" y="150" width="220" height="14" fill="#D3DAE4"/><rect x="100" y="164" width="190" height="96" fill="#F2F4F8"/><g fill="#C9D1DC"><rect x="108" y="168" width="10" height="88"/><rect x="132" y="168" width="10" height="88"/><rect x="156" y="168" width="10" height="88"/><rect x="180" y="168" width="10" height="88"/><rect x="204" y="168" width="10" height="88"/><rect x="228" y="168" width="10" height="88"/><rect x="252" y="168" width="10" height="88"/><rect x="276" y="168" width="10" height="88"/></g><rect x="20" y="186" width="80" height="74" fill="#E4E9F0"/><rect x="290" y="186" width="80" height="74" fill="#E4E9F0"/><g fill="#B7C3D2"><rect x="32" y="198" width="14" height="20"/><rect x="56" y="198" width="14" height="20"/><rect x="80" y="198" width="10" height="20"/><rect x="302" y="198" width="14" height="20"/><rect x="326" y="198" width="14" height="20"/><rect x="350" y="198" width="10" height="20"/></g><ellipse cx="18" cy="250" rx="38" ry="30" fill="#4E8A5C"/><ellipse cx="372" cy="250" rx="40" ry="32" fill="#4E8A5C"/><ellipse cx="60" cy="262" rx="30" ry="20" fill="#5E9C6B"/><ellipse cx="335" cy="262" rx="30" ry="20" fill="#5E9C6B"/><rect x="0" y="258" width="390" height="42" fill="#DDE5EF"/></svg>
+  <div class="ob-body">
+    <div>
+      <h2>Doğru Kadro,<br><span>Doğru Zaman!</span></h2>
+      <p class="lead2">KPSS puanını gir, sana uygun güncel kamu kadrolarını keşfet.</p>
+      <div class="feat">
+        <div class="f1"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><div><b>Anında Eşleşme</b><small>Puanına uygun kadroları gör</small></div></div>
+        <div class="f1"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></div><div><b>Güncel İlanlar</b><small>En yeni ilanlardan haberdar ol</small></div></div>
+        <div class="f1"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20V14"/><path d="M12 20V9"/><path d="M18 20V4"/></svg></div><div><b>Akıllı Öneriler</b><small>Sana özel kariyer fırsatları</small></div></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <button class="ob-btn" data-ob="giris">Hemen Başlayalım <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+      <p class="ob-alt">Zaten hesabın var mı? <button class="ob-link" data-ob="giris">Giriş Yap</button></p>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== GİRİŞ ===== -->
+<div class="ob hidden" id="ob-giris"><div class="ob-in"><div class="ob-login">
+  <button class="ob-geri" data-ob="hosgeldin" aria-label="Geri"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2350" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg></button>
+  <div class="ob-logo">
+    <svg width="72" height="72" viewBox="0 0 120 120" role="img" aria-label="Kadrom logosu"><circle cx="52" cy="52" r="38" fill="#fff" stroke="#F5A623" stroke-width="12"/><path d="M80 80L104 104" stroke="#F5A623" stroke-width="14" stroke-linecap="round"/><circle cx="52" cy="42" r="11" fill="#0E2350"/><path d="M30 76C30 62 40 56 52 56C64 56 74 62 74 76Z" fill="#0E2350"/><path d="M52 57L48 62L52 74L56 62Z" fill="#F5A623"/></svg>
+    <h1>Kadrom</h1>
+    <p>Hesabına giriş yap,<br>uygun kadroları keşfetmeye devam et.</p>
+  </div>
+  <div class="ob-tabs" role="tablist" aria-label="Giriş yöntemi">
+    <button class="on" role="tab" aria-selected="true" data-yontem="mail"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>E-posta</button>
+    <button role="tab" aria-selected="false" data-yontem="tel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Telefon</button>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <label class="sr" for="ob-kimlik" id="ob-kimlik-l">E-posta adresi</label>
+    <div class="ob-inp"><svg class="sol" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><input id="ob-kimlik" type="email" placeholder="E-posta adresin" autocomplete="email"></div>
+    <label class="sr" for="ob-sifre">Şifre</label>
+    <div class="ob-inp"><svg class="sol" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><input id="ob-sifre" type="password" placeholder="Şifren" autocomplete="current-password"><button class="goz" id="ob-goz" type="button" aria-label="Şifreyi göster"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+    <div class="ob-row"><label><input type="checkbox" id="ob-hatirla" checked> Beni hatırla</label><button class="ob-link" type="button" id="ob-unuttum">Şifremi unuttum?</button></div>
+  </div>
+  <button class="ob-btn" data-ob="tamam">Giriş Yap <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+  <div class="ob-veya">veya</div>
+  <button class="ob-btn beyaz" data-ob="tamam"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.4h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.7z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>Google ile devam et</button>
+  <p class="ob-alt" style="margin-top:auto">Hesabın yok mu? <button class="ob-link" data-ob="tamam">Kayıt Ol</button></p>
+</div></div></div>
+
 <div class="wrap">
   <header class="top">
-    <div class="logo"><div class="mark">K</div><div>Kadrom<div class="sub" id="hello">Sana uygun kamu ilanları</div></div></div>
+    <div class="logo"><div class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="52" cy="52" r="38" fill="#fff" stroke="#F5A623" stroke-width="12"/><path d="M80 80L104 104" stroke="#F5A623" stroke-width="14" stroke-linecap="round"/><circle cx="52" cy="42" r="11" fill="#0E2350"/><path d="M30 76C30 62 40 56 52 56C64 56 74 62 74 76Z" fill="#0E2350"/><path d="M52 57L48 62L52 74L56 62Z" fill="#F5A623"/></svg></div><div>Kadrom<div class="sub" id="hello">Sana uygun kamu ilanları</div></div></div>
   </header>
 
   <!-- İLANLAR -->
@@ -747,7 +847,48 @@ function normalizeProfil(x){ const b=bosProfil(); const p=Object.assign(b, x||{}
   if(profilVar) sekme('ilanlar'); else { adim=0; sekme('profil'); }
 })();
 
-const VERI_URL = 'https://raw.githubusercontent.com/__REPO__/main/veri/ilanlar.json';
+// ---------- Açılış / karşılama / giriş akışı ----------
+// Not: Şimdilik gerçek hesap sistemi yok; giriş ekranı profili bu cihazda açar.
+(function acilisAkisi(){
+  const ekranlar = ['hosgeldin','giris'];
+  function goster(ad){ ekranlar.forEach(e=>$('#ob-'+e).classList.toggle('hidden', e!==ad)); }
+  function kapat(){ ekranlar.forEach(e=>$('#ob-'+e).classList.add('hidden')); }
+  let girisYapildi = false;
+  try{ girisYapildi = localStorage.getItem('kadrom-giris')==='1'; }catch(e){}
+  setTimeout(()=>{
+    if(!girisYapildi) goster('hosgeldin');
+    $('#ob-splash').classList.add('kapan');
+    setTimeout(()=>$('#ob-splash').classList.add('hidden'), 400);
+  }, 1500);
+  document.querySelectorAll('[data-ob]').forEach(b=>b.addEventListener('click', ()=>{
+    const hedef = b.dataset.ob;
+    if(hedef==='tamam'){
+      try{ if($('#ob-hatirla').checked) localStorage.setItem('kadrom-giris','1'); }catch(e){}
+      kapat();
+      if(!profilVar){ adim=0; sekme('profil'); }
+      return;
+    }
+    goster(hedef); document.querySelector('#ob-'+hedef).scrollTop = 0;
+  }));
+  document.querySelectorAll('[data-yontem]').forEach(b=>b.addEventListener('click', ()=>{
+    const tel = b.dataset.yontem==='tel';
+    document.querySelectorAll('[data-yontem]').forEach(x=>{ const on = x===b; x.classList.toggle('on', on); x.setAttribute('aria-selected', on?'true':'false'); });
+    const inp = $('#ob-kimlik');
+    inp.type = tel ? 'tel' : 'email';
+    inp.placeholder = tel ? '05XX XXX XX XX' : 'E-posta adresin';
+    inp.autocomplete = tel ? 'tel' : 'email';
+    $('#ob-kimlik-l').textContent = tel ? 'Telefon numarası' : 'E-posta adresi';
+    inp.value = '';
+  }));
+  $('#ob-goz').addEventListener('click', ()=>{
+    const s = $('#ob-sifre'); const ac = s.type==='password';
+    s.type = ac ? 'text' : 'password';
+    $('#ob-goz').setAttribute('aria-label', ac ? 'Şifreyi gizle' : 'Şifreyi göster');
+  });
+  $('#ob-unuttum').addEventListener('click', ()=>toast('Şifre sıfırlama yakında eklenecek'));
+})();
+
+const VERI_URL ='https://raw.githubusercontent.com/__REPO__/main/veri/ilanlar.json';
 function veriYukle(v){ if(v && Array.isArray(v.ilanlar) && v.ilanlar.length){ ilanlar=v.ilanlar; meta={guncelleme:v.guncelleme}; tazelik(); renderAll(); return true; } return false; }
 async function bagimsiz(){
   let ok=false;
